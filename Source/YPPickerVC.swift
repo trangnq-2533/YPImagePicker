@@ -29,7 +29,8 @@ open class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
     /// Private callbacks to YPImagePicker
     public var didClose:(() -> Void)?
     public var didSelectItems: (([YPMediaItem]) -> Void)?
-    
+    public var didNextEnabled: ((Bool) -> Void)?
+
     enum Mode {
         case library
         case camera
@@ -303,6 +304,11 @@ open class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
         navigationItem.rightBarButtonItem?.setFont(font: YPConfig.fonts.rightBarButtonFont, forState: .normal)
         navigationItem.rightBarButtonItem?.setFont(font: YPConfig.fonts.rightBarButtonFont, forState: .disabled)
         navigationItem.leftBarButtonItem?.setFont(font: YPConfig.fonts.leftBarButtonFont, forState: .normal)
+        var enabled = navigationItem.rightBarButtonItem != nil
+        if let rightBarButtonItem = navigationItem.rightBarButtonItem {
+            enabled = rightBarButtonItem.isEnabled
+        }
+        didNextEnabled?(enabled)
     }
     
     @objc

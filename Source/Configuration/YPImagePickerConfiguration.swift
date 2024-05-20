@@ -185,6 +185,12 @@ public struct YPConfigLibrary {
     
     /// Set the overlay type shown on top of the selected library item
     public var itemOverlayType: YPItemOverlayType = .grid
+
+    /// Set visible maxNumberWarning when selected a limit of items with multiple selection. Defaults to false.
+    public var ignoreMaxNumberWarning = false
+
+    /// Allow to disable fetch image and crop.  Defaults to false
+    public var disableCropImage = false
 }
 
 /// Encapsulates video specific settings.
